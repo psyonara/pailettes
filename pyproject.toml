@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pailettes"
-version = "0.1.1"
+version = "0.1.2"
 description = ""
 authors = ["Helmut Irle <me@helmut.dev>"]
 readme = "README.md"
