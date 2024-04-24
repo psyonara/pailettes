@@ -10,7 +10,7 @@ app = typer.Typer()
 
 
 @app.command()
-def generate(theme: str, palette_count: int = 1, color_count: int = 4):
+def generate(theme: str, palette_count: int = 1, color_count: int = 4, to_json: bool = False, json_file: str = None):
     api_key = os.getenv('OPENAI_KEY')
     if not api_key:
         raise typer.BadParameter("Please set your OpenAI API KEY as an env var named 'OPENAI_KEY'.")
@@ -51,6 +51,16 @@ def generate(theme: str, palette_count: int = 1, color_count: int = 4):
     response = session.choices[0].message.content
 
     json_list = json.loads(response)
+
+    if to_json is True:
+        pretty_json = json.dumps(json_list, indent=4)
+        if json_file:
+            with open(json_file, "w") as fh:
+                fh.write(pretty_json)
+            print(f"Palette data saved in {json_file}.")
+        else:
+            print(pretty_json)
+        return
 
     for json_resp in json_list:
         print(json_resp["name"])
