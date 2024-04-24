@@ -22,16 +22,16 @@ pip install pailettes
 
 To configure your OpenAI API key, create an environment variable as follows.
 
+### Linux
+```shell
+export OPENAI_KEY="your-key-goes-here"
+```
+
 ### Windows
 TODO
 
 ### MacOS
 TODO
-
-### Linux
-```shell
-export OPENAI_KEY="your-key-goes-here"
-```
 
 This will set your OpenAI key for that terminal session. If you would like to permanently set the environment variable, consult the documentation of your OS/shell.
 
@@ -59,4 +59,43 @@ To specify the number of palettes to generate:
 
 ```shell
 pailettes retro --palette-count=3
+```
+
+### Output to JSON
+
+To output the palettes in JSON format, use the `to-json` parameter:
+
+```shell
+pailettes synthwave --palette-count=2 --to-json
+```
+
+And to output the JSON to a file, just add the `json-file` parameter:
+
+```shell
+pailettes synthwave --palette-count=2 --to-json --json-file=palettes.json
+```
+
+An example output:
+
+```json
+[
+    {
+        "name": "Neon Sunset",
+        "colors": [
+            "#FF0066",
+            "#FF9900",
+            "#FFCC00",
+            "#33CCFF"
+        ]
+    },
+    {
+        "name": "Digital Dusk",
+        "colors": [
+            "#6600FF",
+            "#00FFCC",
+            "#FF33FF",
+            "#FF6600"
+        ]
+    }
+]
 ```
